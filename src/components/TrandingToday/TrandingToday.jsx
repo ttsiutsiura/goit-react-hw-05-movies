@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchMovieGenres, fetchTrending } from 'service/moviesAPI';
+import { fetchTrending } from 'service/moviesAPI';
 import { Link } from 'react-router-dom';
 
 export function TrandingToday() {
@@ -7,7 +7,6 @@ export function TrandingToday() {
 
   useEffect(() => {
     fetchTrending().then(data => setMovies(data));
-    fetchMovieGenres();
   }, []);
 
   return (

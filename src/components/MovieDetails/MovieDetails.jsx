@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'service/moviesAPI';
 
 export function MovieDetails() {
@@ -13,7 +13,6 @@ export function MovieDetails() {
     });
   }, [movieId]);
 
-  console.log(movieDetails);
   return (
     <>
       <img
@@ -39,6 +38,16 @@ export function MovieDetails() {
         {movieDetails.genres !== undefined &&
           movieDetails.genres.map(genre => genre.name).join(', ')}
       </p>
+      <h3>Additional info:</h3>
+      <ul>
+        <li>
+          <Link to={'credits'}>Credits</Link>
+        </li>
+        <li>
+          <Link to={'reviews'}>Reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
     </>
   );
 }
