@@ -11,6 +11,10 @@ export function MovieCredits() {
     fetchMovieCredits(movieId).then(actors => setActors(actors.slice(0, 7)));
   }, [movieId]);
 
+  if (actors.length === 0) {
+    return <p>There is no information.</p>;
+  }
+
   return (
     <ul>
       {actors.map(actor => (

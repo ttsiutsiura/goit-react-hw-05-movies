@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'service/moviesAPI';
 
 export function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
-
   const { movieId } = useParams(null);
+  const location = useLocation();
+  const backLink = location.state?.from ?? '/movies';
 
   useEffect(() => {
     fetchMovieDetails(movieId).then(details => {
@@ -15,19 +16,20 @@ export function MovieDetails() {
 
   return (
     <>
+      <Link to={backLink}>Go back</Link>
       <img
         alt=""
         src={`https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`}
       ></img>
       <h1>
-        {movieDetails.title}{' '}
+        {movieDetails.title}
         {`(${
           movieDetails.release_date !== undefined &&
           movieDetails.release_date.slice(0, 4)
         })`}
       </h1>
       <p>
-        User Score:{' '}
+        User Score:
         {movieDetails.vote_average !== undefined &&
           movieDetails.vote_average.toFixed(1)}
       </p>

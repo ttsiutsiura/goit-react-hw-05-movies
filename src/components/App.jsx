@@ -5,6 +5,7 @@ import { Movies } from 'pages/Movies';
 import { MovieDetails } from './MovieDetails/MovieDetails';
 import { MovieCredits } from './MovieCredits/MovieCredits';
 import { MovieReviews } from './MovieReviews/MovieReviews';
+import { NotFound } from 'pages/NotFound';
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
           <Route path="credits" element={<MovieCredits />} />
           <Route path="reviews" element={<MovieReviews />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
