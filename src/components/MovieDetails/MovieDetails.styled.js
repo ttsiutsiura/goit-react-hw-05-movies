@@ -8,13 +8,23 @@ export const MainInfoWrapper = styled.div`
   border-bottom: 1px solid black;
 `;
 
-export const MoviePoster = styled.img`
-  margin: 12px;
-  border-radius: 4px;
+export const Info = styled.div`
+  width: 900px;
 `;
+
+export const MoviePoster = styled.img``;
 
 export const BackLink = styled(Link)`
   color: orangered;
   text-decoration: none;
   font-weight: 500;
+`;
+
+export const PosterContainer = styled.div`
+  margin: 12px;
+  border-radius: 4px;
+  background-color: #dcdcdc;
+  width: 300px;
+  height: 450px;
+  overflow: hidden;
 `;

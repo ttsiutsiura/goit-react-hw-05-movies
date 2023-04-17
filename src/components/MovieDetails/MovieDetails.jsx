@@ -3,6 +3,8 @@ import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'service/moviesAPI';
 import { MainInfoWrapper } from './MovieDetails.styled';
 import { MoviePoster } from './MovieDetails.styled';
+import { PosterContainer } from './MovieDetails.styled';
+import { Info } from './MovieDetails.styled';
 import { BackLink } from './MovieDetails.styled';
 import { TrandingListItem } from 'components/TrandingToday/TrandingToday.styled';
 import { MovieLink } from 'components/TrandingToday/TrandingToday.styled';
@@ -23,11 +25,14 @@ function MovieDetails() {
     <>
       <BackLink to={backLink}>Go back</BackLink>
       <MainInfoWrapper>
-        <MoviePoster
-          alt=""
-          src={`https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`}
-        ></MoviePoster>
-        <div>
+        <PosterContainer>
+          <MoviePoster
+            alt=""
+            src={`https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`}
+          ></MoviePoster>
+        </PosterContainer>
+
+        <Info>
           <h1>
             {movieDetails.title
               ? `${movieDetails.title} ${movieDetails.release_date.slice(0, 4)}`
@@ -44,7 +49,7 @@ function MovieDetails() {
             {movieDetails.genres !== undefined &&
               movieDetails.genres.map(genre => genre.name).join(', ')}
           </p>
-        </div>
+        </Info>
       </MainInfoWrapper>
 
       <h3>Additional info:</h3>
