@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { fetchTrending } from 'service/moviesAPI';
-import { Link, useLocation } from 'react-router-dom';
+import { MovieLink } from './TrandingToday.styled';
+import { TrandingListItem } from './TrandingToday.styled';
 
 export function TrandingToday() {
   const [movies, setMovies] = useState([]);
@@ -43,11 +45,11 @@ export function TrandingToday() {
         <h1>Trending today</h1>
         <ul>
           {movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            <TrandingListItem key={movie.id}>
+              <MovieLink to={`/movies/${movie.id}`} state={{ from: location }}>
                 {movie.title}
-              </Link>
-            </li>
+              </MovieLink>
+            </TrandingListItem>
           ))}
         </ul>
       </>

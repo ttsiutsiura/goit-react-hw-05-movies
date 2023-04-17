@@ -2,13 +2,16 @@ import { useEffect } from 'react';
 import { fetchMovieCredits } from 'service/moviesAPI';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { ActorCard } from './MovieCredits.styled';
+import { ActorList } from './MovieCredits.styled';
+import { ActorImage } from './MovieCredits.styled';
 
-export function MovieCredits() {
+function MovieCredits() {
   const [actors, setActors] = useState([]);
   const { movieId } = useParams(null);
 
   useEffect(() => {
-    fetchMovieCredits(movieId).then(actors => setActors(actors.slice(0, 7)));
+    fetchMovieCredits(movieId).then(actors => setActors(actors.slice(0, 5)));
   }, [movieId]);
 
   if (actors.length === 0) {
@@ -16,17 +19,19 @@ export function MovieCredits() {
   }
 
   return (
-    <ul>
+    <ActorList>
       {actors.map(actor => (
-        <li key={actor.id}>
-          <img
+        <ActorCard key={actor.id}>
+          <ActorImage
             src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
             alt=""
           />
-          <p>{actor.name}</p>
-          <p>{actor.character}</p>
-        </li>
+          <b>{actor.name}</b>
+          <p>Character: {actor.character}</p>
+        </ActorCard>
       ))}
-    </ul>
+    </ActorList>
   );
 }
+
+export default MovieCredits;

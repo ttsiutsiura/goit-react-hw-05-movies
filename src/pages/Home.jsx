@@ -1,5 +1,7 @@
 import { TrandingToday } from 'components/TrandingToday/TrandingToday';
 
-export function Home() {
+function Home() {
   return <TrandingToday />;
 }
+
+export default Home;

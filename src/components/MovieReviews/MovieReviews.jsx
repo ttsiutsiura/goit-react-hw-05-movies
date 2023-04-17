@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { fetchMovieReviews } from 'service/moviesAPI';
 import { useParams } from 'react-router-dom';
+import { Reviewlist } from './MovieReviews.styled';
+import { Review } from './MovieReviews.styled';
 
-export function MovieReviews() {
+function MovieReviews() {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams(null);
 
   useEffect(() => {
-    // fetchMovieReviews(movieId).then(reviews => setReviews(reviews.slice(0, 3)));
+    fetchMovieReviews(movieId).then(reviews => setReviews(reviews.slice(0, 3)));
   }, [movieId]);
 
   if (reviews.length === 0) {
@@ -15,13 +17,15 @@ export function MovieReviews() {
   }
 
   return (
-    <ul>
+    <Reviewlist>
       {reviews.map(review => (
-        <li key={review.id}>
-          <p>{review.author}</p>
+        <Review key={review.id}>
+          <b>{review.author}</b>
           <p>{review.content}</p>
-        </li>
+        </Review>
       ))}
-    </ul>
+    </Reviewlist>
   );
 }
+
+export default MovieReviews;
