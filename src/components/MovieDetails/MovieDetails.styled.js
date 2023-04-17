@@ -12,7 +12,9 @@ export const Info = styled.div`
   width: 900px;
 `;
 
-export const MoviePoster = styled.img``;
+export const MoviePoster = styled.img`
+  width: 100%;
+`;
 
 export const BackLink = styled(Link)`
   color: orangered;
