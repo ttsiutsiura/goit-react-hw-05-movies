@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { ActorCard } from './MovieCredits.styled';
 import { ActorList } from './MovieCredits.styled';
 import { ActorImage } from './MovieCredits.styled';
+import { ImageContainer } from './MovieCredits.styled';
 
 function MovieCredits() {
   const [actors, setActors] = useState([]);
@@ -22,10 +23,12 @@ function MovieCredits() {
     <ActorList>
       {actors.map(actor => (
         <ActorCard key={actor.id}>
-          <ActorImage
-            src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
-            alt=""
-          />
+          <ImageContainer>
+            <ActorImage
+              src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+              alt=""
+            />
+          </ImageContainer>
           <b>{actor.name}</b>
           <p>Character: {actor.character}</p>
         </ActorCard>

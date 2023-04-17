@@ -16,7 +16,14 @@ export const ActorList = styled.ul`
 `;
 
 export const ActorImage = styled.img`
-  margin-bottom: 12px;
   display: block;
+`;
+
+export const ImageContainer = styled.div`
+  margin-bottom: 12px;
+  width: 200px;
+  height: 300px;
+  background-color: #dcdcdc;
+  overflow: hidden;
   border-radius: 4px;
 `;
